@@ -35,7 +35,10 @@ namespace WebAppMVC.Services
 
             if (response.IsSuccessStatusCode)
             {
-                return JsonSerializer.Deserialize<T>(await response.Content.ReadAsStringAsync());
+                return JsonSerializer.Deserialize<T>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
             }
 
             return new T();
@@ -48,7 +51,10 @@ namespace WebAppMVC.Services
 
             if (response.IsSuccessStatusCode)
             {
-                return JsonSerializer.Deserialize<T>(await response.Content.ReadAsStringAsync());
+                return JsonSerializer.Deserialize<T>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
             }
 
             return new T();
