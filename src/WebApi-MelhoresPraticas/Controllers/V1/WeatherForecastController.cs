@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi_MelhoresPraticas.Controllers.V1
+namespace WebApi_MelhoresPraticas.Controllers.v1
 {
     [ApiController]
     [ApiVersion("1.0")]

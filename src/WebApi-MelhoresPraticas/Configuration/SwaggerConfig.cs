@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace WebApiCore.Swagger
 {
@@ -16,6 +17,9 @@ namespace WebApiCore.Swagger
     {
         public static IServiceCollection AddSwaggerConfig(this IServiceCollection services)
         {
+
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+
             services.AddSwaggerGen(c =>
             {
                 c.OperationFilter<SwaggerDefaultValues>();
@@ -60,6 +64,7 @@ namespace WebApiCore.Swagger
                     {
                         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                     }
+                    options.DocExpansion(DocExpansion.List);
                 });
             return app;
         }
