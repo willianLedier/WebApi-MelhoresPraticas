@@ -10,8 +10,7 @@ namespace WebAppMVC.Services
     {
 
         private readonly HttpClient _httpClient;
-
-        public Uri? BaseAddress { get; set; }
+        public Uri? BaseAddress { get { return _httpClient.BaseAddress; } set { _httpClient.BaseAddress = value; } }
 
         public HttpClientCustom(HttpClient httpClient)
         {

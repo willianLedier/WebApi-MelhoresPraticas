@@ -32,7 +32,7 @@ namespace WebAppMVC
             }).AddTypedClient(Refit.RestService.For<IWeatherForecastRefit>);
 
             services.AddHttpClient<IHttpClientCustom, HttpClientCustom>();
-            services.AddHttpClient<IWeatherForecastHttpClient, WeatherForecastHttpClient>();
+            services.AddScoped<IWeatherForecastHttpClient, WeatherForecastHttpClient>();
 
         }
 
