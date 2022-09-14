@@ -8,50 +8,50 @@ using WebAppMVC.Services;
 
 namespace WebAppMVC.Controllers
 {
-    public class RefitController : Controller
+    public class HttpClientController : Controller
     {
-        private readonly ILogger<RefitController> _logger;
-        private readonly IWeatherForecastRefit _weatherForecastRefit;
+        private readonly ILogger<HttpClientController> _logger;
+        private readonly IWeatherForecastHttpClient _weatherForecastHttpClient;
 
-        public RefitController(ILogger<RefitController> logger,
-            IWeatherForecastRefit weatherForecastRefit)
+        public HttpClientController(ILogger<HttpClientController> logger,
+            IWeatherForecastHttpClient weatherForecastHttpClient)
         {
             _logger = logger;
-            _weatherForecastRefit = weatherForecastRefit;
+            _weatherForecastHttpClient = weatherForecastHttpClient;
         }
         public async Task<ActionResult<IEnumerable<WeatherForecastDTO>>> Get()
         {
-            var response = await _weatherForecastRefit.Get();
+            var response = await _weatherForecastHttpClient.Get();
             return View(response);
         }
 
         public async Task<ActionResult<IEnumerable<WeatherForecastDTO>>> GetFromRoute(int id)
         {
-            var response = await _weatherForecastRefit.GetFromRoute(id);
+            var response = await _weatherForecastHttpClient.GetFromRoute(id);
             return View(response);
         }
 
         public async Task<ActionResult<IEnumerable<WeatherForecastDTO>>> GetFromHeader(int id)
         {
-            var response = await _weatherForecastRefit.GetFromHeader(id);
+            var response = await _weatherForecastHttpClient.GetFromHeader(id);
             return View(response);
         }
 
         public async Task<ActionResult<IEnumerable<WeatherForecastDTO>>> GetFromQuery(int id)
         {
-            var response = await _weatherForecastRefit.GetFromQuery(id);
+            var response = await _weatherForecastHttpClient.GetFromQuery(id);
             return View(response);
         }
 
         public async Task<ActionResult<IEnumerable<WeatherForecastDTO>>> PostFromBody(WeatherForecastDTO weatherForecastDTO)
         {
-            var response = await _weatherForecastRefit.PostFromBody(weatherForecastDTO);
+            var response = await _weatherForecastHttpClient.PostFromBody(weatherForecastDTO);
             return View(response);
         }
 
         public async Task<ActionResult<IEnumerable<WeatherForecastDTO>>> PostFromForm(WeatherForecastDTO weatherForecastDTO)
         {
-            var response = await _weatherForecastRefit.PostFromForm(weatherForecastDTO);
+            var response = await _weatherForecastHttpClient.PostFromForm(weatherForecastDTO);
             return View(response);
         }
 

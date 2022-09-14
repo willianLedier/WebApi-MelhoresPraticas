@@ -29,9 +29,10 @@ namespace WebAppMVC
             services.AddHttpClient("refit", options =>
             {
                 options.BaseAddress = new Uri(Configuration.GetSection("URI_WeatherForecastAPI").Value);
-            })
-                .AddTypedClient(Refit.RestService.For<IWeatherForecastRefit>);
+            }).AddTypedClient(Refit.RestService.For<IWeatherForecastRefit>);
 
+            services.AddHttpClient<IHttpClientCustom, HttpClientCustom>();
+            services.AddHttpClient<IWeatherForecastHttpClient, WeatherForecastHttpClient>();
 
         }
 
