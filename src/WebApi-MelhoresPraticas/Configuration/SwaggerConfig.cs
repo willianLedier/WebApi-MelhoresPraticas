@@ -13,9 +13,9 @@ namespace WebApiCore.Swagger
             {
                 c.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Title = "API Client OAUTH JWT",
-                    Description = "",
-                    Contact = new OpenApiContact() { Name = "", Email = "" },
+                    Title = "API Title",
+                    Description = "API Description",
+                    Contact = new OpenApiContact() { Name = "ContactEmail", Email = "ContactEmail" },
                     License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
                 });
 
