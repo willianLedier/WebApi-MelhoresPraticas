@@ -1,0 +1,8 @@
+- #### HttpClient
+- #### Refit
+- #### Swagger API
+- #### Versionamento API
+- #### HealthCheck API 
+- #### Circuit Breaker com polly
+- #### Retry Pattern com polly
+- #### CORS - Cross-Origin Resource Sharing
