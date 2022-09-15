@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Polly;
 using System;
 using WebAppMVC.Extensions;
 using WebAppMVC.Services;
@@ -31,7 +32,8 @@ namespace WebAppMVC
 
             services.AddHttpClient<IHttpClientCustom, HttpClientCustom>()
                 //.AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600)))
-                .AddPolicyHandler(PollyExtensions.EsperarTentar());
+                .AddPolicyHandler(PollyExtensions.EsperarTentar())
+                .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
 
             services.AddScoped<IWeatherForecastHttpClient, WeatherForecastHttpClient>();
         
