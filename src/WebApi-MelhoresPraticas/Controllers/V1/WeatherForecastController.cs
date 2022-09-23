@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using WebApi_MelhoresPraticas.Models;
 
 namespace WebApi_MelhoresPraticas.Controllers.v1
 {
@@ -25,10 +25,10 @@ namespace WebApi_MelhoresPraticas.Controllers.v1
             _logger = logger;
         }
 
-        private ActionResult<IEnumerable<WeatherForecast>> GetResult()
+        private ActionResult<IEnumerable<WeatherForecastDTO>> GetResult()
         {
             var rng = new Random();
-            var response = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var response = Enumerable.Range(1, 5).Select(index => new WeatherForecastDTO
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
@@ -41,37 +41,37 @@ namespace WebApi_MelhoresPraticas.Controllers.v1
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<WeatherForecast>> Get()
+        public ActionResult<IEnumerable<WeatherForecastDTO>> Get()
         {
             return GetResult();
         }
 
         [HttpGet("GetFromRoute/{id}")]
-        public ActionResult<IEnumerable<WeatherForecast>> GetFromRoute([FromRoute] int id)
+        public ActionResult<IEnumerable<WeatherForecastDTO>> GetFromRoute([FromRoute] int id)
         {
             return GetResult();
         }
 
         [HttpGet("GetFromHeader")]
-        public ActionResult<IEnumerable<WeatherForecast>> GetFromHeader([FromHeader] int id)
+        public ActionResult<IEnumerable<WeatherForecastDTO>> GetFromHeader([FromHeader] int id)
         {
             return GetResult();
         }
 
         [HttpGet("GetFromQuery")]
-        public ActionResult<IEnumerable<WeatherForecast>> GetFromQuery([FromQuery] int id)
+        public ActionResult<IEnumerable<WeatherForecastDTO>> GetFromQuery([FromQuery] int id)
         {
             return GetResult();
         }
 
         [HttpPost("PostFromBody")]
-        public ActionResult<IEnumerable<WeatherForecast>> PostFromBody([FromBody] WeatherForecast value)
+        public ActionResult<IEnumerable<WeatherForecastDTO>> PostFromBody([FromBody] WeatherForecastDTO value)
         {
             return GetResult();
         }
 
         [HttpPost("PostFromForm")]
-        public ActionResult<IEnumerable<WeatherForecast>> PostFromForm([FromForm] WeatherForecast value)
+        public ActionResult<IEnumerable<WeatherForecastDTO>> PostFromForm([FromForm] WeatherForecastDTO value)
         {
             return GetResult();
         }

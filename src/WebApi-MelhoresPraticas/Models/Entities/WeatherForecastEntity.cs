@@ -1,8 +1,8 @@
 using System;
 
-namespace WebApi_MelhoresPraticas
+namespace WebApi_MelhoresPraticas.Models
 {
-    public class WeatherForecast
+    public class WeatherForecastEntity : BaseEntity<int>
     {
         public DateTime Date { get; set; }
 

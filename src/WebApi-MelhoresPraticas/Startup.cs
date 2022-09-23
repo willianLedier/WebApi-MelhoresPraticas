@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using WebApi_MelhoresPraticas.Services;
 using WebApiCore.Swagger;
 
 namespace WebApi_MelhoresPraticas
@@ -25,6 +23,7 @@ namespace WebApi_MelhoresPraticas
         {
 
             services.AddControllers();
+            //services.AddScoped<IWeatherForecastAppService, WeatherForecastAppService>();
             services.AddHealthCheckConfiguration(Configuration);
             services.AddSwaggerConfig();
             services.AddVersioningConfig(Configuration);
